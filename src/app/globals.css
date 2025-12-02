@@ -1,26 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* Forçando Dark Mode como padrão */
-  --background: #030712;
-  /* Gray 950 */
-  --foreground: #f8fafc;
-  /* Slate 50 */
+  /* Theme: Industrial Precision */
+  /* Background: Deep Slate */
+  --background: #0f172a; /* Slate 900 */
+  --foreground: #f1f5f9; /* Slate 100 */
 
-  --primary: #3b82f6;
-  /* Blue 500 */
+  /* Primary: Cyan/Teal (Precision) */
+  --primary: #06b6d4; /* Cyan 500 */
   --primary-foreground: #ffffff;
 
-  --muted: #1e293b;
-  /* Slate 800 */
-  --muted-foreground: #94a3b8;
-  /* Slate 400 */
+  /* Secondary: Slate */
+  --muted: #1e293b; /* Slate 800 */
+  --muted-foreground: #94a3b8; /* Slate 400 */
 
-  --border: #1e293b;
-  /* Slate 800 */
+  --border: #334155; /* Slate 700 */
+  
+  --accent: #0ea5e9; /* Sky 500 */
 }
-
-/* Removido o media query para garantir consistência */
 
 body {
   background-color: var(--background);
@@ -28,6 +25,14 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 /* Utilitários de Animação */

@@ -1,17 +1,18 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Database, LayoutDashboard, Mail, Smartphone, Layers, Globe, Search, PenTool, Code2, Rocket, Menu, X } from "lucide-react"
+import { ArrowRight, Database, LayoutDashboard, Mail, Smartphone, Layers, Globe, Search, PenTool, Code2, Rocket, Menu, X, ChevronRight, Terminal, Cpu } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import React, { useState } from "react"
 
-// --- PROSOLV OFFICIAL LOGO (Code Block) ---
+// --- PROSOLV OFFICIAL LOGO (Industrial Theme) ---
 const ProSolvLogo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 4H14C19.5228 4 24 8.47715 24 14V14C24 19.5228 19.5228 24 14 24H6V4Z" stroke="#3B82F6" strokeWidth="3" />
-    <path d="M14 10L18 14L14 18" stroke="#60A5FA" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M6 28H14" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" />
+    <rect x="4" y="4" width="24" height="24" rx="2" stroke="#06b6d4" strokeWidth="2" />
+    <path d="M10 16H22" stroke="#06b6d4" strokeWidth="2" strokeLinecap="square" />
+    <path d="M16 10V22" stroke="#06b6d4" strokeWidth="2" strokeLinecap="square" />
+    <rect x="14" y="14" width="4" height="4" fill="#06b6d4" />
   </svg>
 )
 
@@ -19,18 +20,18 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden font-sans selection:bg-cyan-500/30">
 
       {/* Navbar */}
-      <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
+      <header className="fixed top-0 w-full z-50 border-b border-white/10 bg-background/90 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3 font-bold text-2xl tracking-tight">
+          <div className="flex items-center gap-3 font-bold text-xl tracking-tight uppercase">
             <ProSolvLogo />
-            <span>ProSolv</span>
+            <span className="tracking-widest">ProSolv</span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground uppercase tracking-wider">
             <Link href="#services" className="hover:text-primary transition-colors">Services</Link>
             <Link href="#about" className="hover:text-primary transition-colors">About</Link>
             <Link href="#contact" className="hover:text-primary transition-colors">Contact</Link>
@@ -39,15 +40,15 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <Link
               href="#contact"
-              className="hidden md:inline-flex px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-full hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20"
+              className="hidden md:inline-flex px-6 py-2.5 bg-primary text-background text-sm font-bold uppercase tracking-wider hover:bg-cyan-400 transition-all rounded-sm"
             >
-              Get Started
+              Initiate Project
             </Link>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-white/5 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-white/5 transition-colors rounded-sm"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -63,36 +64,36 @@ export default function Home() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-white/5 bg-background/95 backdrop-blur-md"
+              className="md:hidden border-t border-white/10 bg-background"
             >
               <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
                 <Link
                   href="#services"
-                  className="px-4 py-3 hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
+                  className="px-4 py-3 hover:bg-white/5 transition-colors text-sm font-medium uppercase tracking-wider border-l-2 border-transparent hover:border-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Services
                 </Link>
                 <Link
                   href="#about"
-                  className="px-4 py-3 hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
+                  className="px-4 py-3 hover:bg-white/5 transition-colors text-sm font-medium uppercase tracking-wider border-l-2 border-transparent hover:border-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   href="#contact"
-                  className="px-4 py-3 hover:bg-white/5 rounded-lg transition-colors text-sm font-medium"
+                  className="px-4 py-3 hover:bg-white/5 transition-colors text-sm font-medium uppercase tracking-wider border-l-2 border-transparent hover:border-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </Link>
                 <Link
                   href="#contact"
-                  className="px-4 py-3 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all text-center"
+                  className="px-4 py-3 bg-primary text-background text-sm font-bold uppercase tracking-wider text-center rounded-sm"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Get Started
+                  Initiate Project
                 </Link>
               </nav>
             </motion.div>
@@ -102,94 +103,108 @@ export default function Home() {
 
       <main className="flex-1 pt-20">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-36 overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] -z-10" />
-          <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 rounded-full blur-[100px] -z-10" />
+        <section className="relative py-24 md:py-32 overflow-hidden bg-grid-pattern">
+          {/* Industrial Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background pointer-events-none" />
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium border border-blue-500/20"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Available for new projects
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]"
-              >
-                We build <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600">Digital Products</span> that scale.
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-              >
-                From high-performance mobile apps to complex field operating systems. We transform your business requirements into powerful software solutions.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-              >
-                <Link
-                  href="#contact"
-                  className="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all flex items-center justify-center gap-2"
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-950/30 border border-cyan-800/50 text-cyan-400 text-xs font-mono uppercase tracking-widest rounded-sm"
                 >
-                  Start a Project <ArrowRight size={18} />
-                </Link>
-                <Link
-                  href="#services"
-                  className="w-full sm:w-auto px-8 py-4 bg-white/5 text-white font-medium rounded-full hover:bg-white/10 transition-all border border-white/10 backdrop-blur-sm"
+                  <span className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+                  System Operational
+                </motion.div>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-5xl md:text-7xl font-bold tracking-tight leading-none"
                 >
-                  Explore Services
-                </Link>
-              </motion.div>
+                  ENGINEERING <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">DIGITAL EXCELLENCE</span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-lg text-muted-foreground max-w-xl leading-relaxed border-l-2 border-cyan-500/30 pl-6"
+                >
+                  We architect high-performance software solutions. From field operating systems to complex data dashboards, we build the infrastructure for your business growth.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="flex flex-wrap gap-4 pt-4"
+                >
+                  <Link
+                    href="#contact"
+                    className="px-8 py-4 bg-primary text-background font-bold uppercase tracking-wider hover:bg-cyan-400 transition-all flex items-center gap-2 rounded-sm group"
+                  >
+                    Start Project <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link
+                    href="#services"
+                    className="px-8 py-4 bg-transparent text-foreground font-medium uppercase tracking-wider border border-white/20 hover:border-cyan-500/50 hover:text-cyan-400 transition-all rounded-sm"
+                  >
+                    View Capabilities
+                  </Link>
+                </motion.div>
+              </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative mt-16 mx-auto max-w-5xl"
+                className="relative"
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-20" />
-                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-blue-500/20 bg-background/50 backdrop-blur-sm">
+                <div className="absolute -inset-4 bg-cyan-500/20 blur-2xl rounded-full opacity-20" />
+                <div className="relative border border-white/10 bg-background/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-2xl shadow-cyan-900/20">
+                  <div className="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
+                    <div className="ml-4 text-xs font-mono text-muted-foreground">dashboard.sys</div>
+                  </div>
                   <Image
                     src="/images/hero-dashboard.png"
-                    alt="ProSolv Digital Dashboard"
-                    width={1200}
-                    height={675}
-                    className="w-full h-auto object-cover"
+                    alt="ProSolv Interface"
+                    width={800}
+                    height={500}
+                    className="w-full h-auto opacity-90"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  {/* Tech Overlay */}
+                  <div className="absolute bottom-6 left-6 p-4 bg-background/90 border border-white/10 backdrop-blur-md rounded-sm">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      <span className="text-xs font-mono text-green-400">SYSTEM ONLINE</span>
+                    </div>
+                    <div className="text-xs font-mono text-muted-foreground">
+                      <div>UPTIME: 99.99%</div>
+                      <div>LATENCY: 24ms</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Tech Stack Section */}
-        <section className="py-10 border-y border-white/5 bg-white/5 backdrop-blur-sm">
-          <div className="container mx-auto px-6">
-            <p className="text-center text-sm text-muted-foreground mb-6 font-medium uppercase tracking-widest">Powered by modern technologies</p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-              {["Next.js", "React", "TypeScript", "Node.js", "Supabase", "PostgreSQL", "Tailwind CSS", "AWS"].map((tech) => (
-                <span key={tech} className="text-lg md:text-xl font-bold text-white/80 hover:text-blue-400 transition-colors cursor-default">
+        {/* Tech Stack Ticker */}
+        <section className="py-8 border-y border-white/5 bg-white/[0.02]">
+          <div className="container mx-auto px-6 overflow-hidden">
+            <div className="flex gap-16 items-center justify-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              {["NEXT.JS", "REACT", "TYPESCRIPT", "NODE.JS", "SUPABASE", "POSTGRESQL", "AWS"].map((tech) => (
+                <span key={tech} className="text-lg font-mono font-bold tracking-widest text-white/60 hover:text-cyan-400 cursor-default">
                   {tech}
                 </span>
               ))}
@@ -198,141 +213,122 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-24 bg-muted/20 border-y border-white/5 relative">
+        <section id="services" className="py-24 relative">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-20 space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold">Our Expertise</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                Comprehensive development services for the modern web.
-              </p>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight">CORE CAPABILITIES</h2>
+                <p className="text-muted-foreground max-w-xl text-lg border-l-2 border-cyan-500/20 pl-4">
+                  Deploying advanced technical solutions for complex operational challenges.
+                </p>
+              </div>
+              <Link href="#contact" className="text-cyan-400 hover:text-cyan-300 font-mono text-sm uppercase tracking-widest flex items-center gap-2 group">
+                Full Service List <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <ServiceCard
-                icon={<Smartphone className="text-blue-400" />}
-                title="Mobile Apps"
-                description="Native and cross-platform mobile applications for iOS and Android using React Native."
+                icon={<Smartphone />}
+                title="Mobile Engineering"
+                description="Native-performance applications for iOS and Android. Built for reliability in the field."
               />
               <ServiceCard
-                icon={<Globe className="text-purple-400" />}
+                icon={<Globe />}
                 title="Web Platforms"
-                description="Scalable web applications built with Next.js. Fast, SEO-friendly, and secure."
+                description="Scalable, secure, and SEO-optimized web applications using Next.js architecture."
               />
               <ServiceCard
-                icon={<Layers className="text-emerald-400" />}
+                icon={<Cpu />}
                 title="Field OS"
-                description="Specialized operating systems for field crews, inventory, and logistics management."
+                description="Custom operating systems for logistics, inventory, and crew management."
               />
               <ServiceCard
-                icon={<Database className="text-pink-400" />}
+                icon={<Database />}
                 title="Backend Systems"
-                description="Robust API architecture and database design to power your business logic."
+                description="High-availability API infrastructure and secure database architecture."
               />
             </div>
           </div>
         </section>
 
         {/* Case Studies Section */}
-        <section className="py-24 border-y border-white/5 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] -z-10" />
-
+        <section className="py-24 bg-muted/20 border-y border-white/5 relative">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 uppercase tracking-wider">
-                Proven Track Record
+            <div className="mb-16">
+              <div className="inline-block px-3 py-1 mb-4 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-widest rounded-sm">
+                Case Studies
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold">Real Projects, Real Results</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                Field-tested systems powering operations for businesses across multiple industries.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">DEPLOYED SOLUTIONS</h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="space-y-24">
               {/* Power Connect */}
-              <CaseStudyCard
-                badge="1+ Year in Production"
-                badgeColor="emerald"
+              <CaseStudyRow
                 title="Power Connect"
-                description="Complete field operations platform with crew management, real-time tracking, and automated workflows. Serving utility companies with mission-critical operations."
-                features={["Live GPS Tracking", "Crew Dispatch", "Work Orders", "Analytics Dashboard"]}
-                gradient="from-emerald-400 to-cyan-500"
+                category="Utility Management Platform"
+                description="A comprehensive field operations platform enabling real-time crew tracking, automated dispatch, and work order management for major utility providers."
+                stats={[
+                  { label: "Active Users", value: "500+" },
+                  { label: "Uptime", value: "99.9%" },
+                  { label: "Efficiency", value: "+40%" }
+                ]}
                 image="/images/power-connect.png"
+                align="left"
               />
 
               {/* Superior Technologies */}
-              <CaseStudyCard
-                badge="Active Production"
-                badgeColor="blue"
+              <CaseStudyRow
                 title="Superior Technologies"
-                description="Equipment lifecycle management system handling maintenance schedules, inventory control, and asset tracking for industrial operations."
-                features={["Equipment Registry", "Maintenance Logs", "Inventory Control", "Service History"]}
-                gradient="from-blue-400 to-purple-500"
+                category="Industrial Asset Management"
+                description="Lifecycle management system for heavy industrial equipment. Features predictive maintenance scheduling and real-time inventory tracking."
+                stats={[
+                  { label: "Assets Tracked", value: "10k+" },
+                  { label: "Cost Savings", value: "25%" },
+                  { label: "Data Points", value: "1M/day" }
+                ]}
                 image="/images/superior-tech.png"
+                align="right"
               />
 
               {/* Conquest Field OS */}
-              <CaseStudyCard
-                badge="Latest Release"
-                badgeColor="purple"
+              <CaseStudyRow
                 title="Conquest Field OS"
-                description="Next-generation field service operating system with advanced role management, locate ticket processing, and comprehensive reporting."
-                features={["Role-Based Access", "Locate Tickets", "Daily Reports", "Customer Portal"]}
-                gradient="from-purple-400 to-pink-500"
+                category="Field Service Operating System"
+                description="Next-generation OS for field service teams. Integrates locate tickets, daily reporting, and customer portals into a unified interface."
+                stats={[
+                  { label: "Response Time", value: "<100ms" },
+                  { label: "Adoption", value: "100%" },
+                  { label: "Errors", value: "~0%" }
+                ]}
                 image="/images/conquest-os.png"
+                align="left"
               />
             </div>
           </div>
         </section>
 
-        {/* Our Process Section */}
-        <section className="py-24 bg-muted/20 relative">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16 space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold">How We Work</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                A transparent and agile process to bring your vision to life.
-              </p>
+        {/* Process Section */}
+        <section className="py-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center mb-20">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">EXECUTION PROTOCOL</h2>
+              <p className="text-muted-foreground">Our systematic approach to software delivery.</p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8 relative">
-              {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/20 to-blue-500/0" />
-
+            <div className="grid md:grid-cols-4 gap-8">
               {[
-                {
-                  step: "01",
-                  title: "Discovery",
-                  desc: "We dive deep into your requirements to understand your business goals.",
-                  icon: <Search className="w-6 h-6 text-blue-400" />
-                },
-                {
-                  step: "02",
-                  title: "Design",
-                  desc: "We create intuitive and beautiful interfaces that users love.",
-                  icon: <PenTool className="w-6 h-6 text-purple-400" />
-                },
-                {
-                  step: "03",
-                  title: "Development",
-                  desc: "We build robust, scalable solutions using modern technologies.",
-                  icon: <Code2 className="w-6 h-6 text-emerald-400" />
-                },
-                {
-                  step: "04",
-                  title: "Launch",
-                  desc: "We deploy your product and ensure smooth operation and scaling.",
-                  icon: <Rocket className="w-6 h-6 text-pink-400" />
-                }
-              ].map((item, index) => (
-                <div key={item.step} className="relative pt-8 group">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-background border border-white/10 flex items-center justify-center z-10 group-hover:border-blue-500/50 transition-colors shadow-lg shadow-black/50">
-                    {item.icon}
-                  </div>
-                  <div className="text-center space-y-4 p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors h-full">
-                    <div className="text-sm font-mono text-muted-foreground opacity-50">{item.step}</div>
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+                { step: "01", title: "Discovery", icon: Search },
+                { step: "02", title: "Architecture", icon: Layers },
+                { step: "03", title: "Development", icon: Terminal },
+                { step: "04", title: "Deployment", icon: Rocket }
+              ].map((item, i) => (
+                <div key={item.step} className="relative p-6 border border-white/10 bg-background/50 backdrop-blur-sm hover:border-cyan-500/50 transition-colors group rounded-sm">
+                  <div className="text-4xl font-bold text-white/5 mb-4 absolute top-4 right-4">{item.step}</div>
+                  <item.icon className="w-8 h-8 text-cyan-400 mb-6" />
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <div className="h-1 w-12 bg-cyan-500/50 group-hover:w-full transition-all duration-500" />
                 </div>
               ))}
             </div>
@@ -340,47 +336,32 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 pointer-events-none" />
+        <section id="contact" className="py-24 bg-cyan-950/10 border-t border-white/5">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto bg-background border border-white/10 p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500" />
 
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="max-w-5xl mx-auto bg-muted/40 rounded-3xl p-8 md:p-16 border border-white/10 backdrop-blur-sm shadow-2xl">
-              <div className="grid md:grid-cols-2 gap-16">
-                <div className="space-y-8">
-                  <div>
-                    <h2 className="text-4xl font-bold mb-4">Let's work together</h2>
-                    <p className="text-muted-foreground text-lg">
-                      Have a project in mind? We'd love to hear about it. Send us a message and we'll get back to you shortly.
-                    </p>
-                  </div>
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <h2 className="text-3xl font-bold mb-6">INITIATE COLLABORATION</h2>
+                  <p className="text-muted-foreground mb-8">
+                    Ready to upgrade your digital infrastructure? Contact our engineering team to discuss your requirements.
+                  </p>
 
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4 text-muted-foreground hover:text-white transition-colors">
-                      <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-                        <Mail className="text-blue-400" />
-                      </div>
-                      <span className="text-lg">contact@prosolv.dev</span>
-                    </div>
+                  <div className="flex items-center gap-4 text-cyan-400 font-mono text-sm">
+                    <Mail className="w-5 h-5" />
+                    <span>contact@prosolv.dev</span>
                   </div>
                 </div>
 
-                <form className="space-y-5">
-                  <div className="grid grid-cols-2 gap-5">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-muted-foreground">Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-muted-foreground">Email</label>
-                      <input type="email" className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all" placeholder="john@example.com" />
-                    </div>
+                <form className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="NAME" className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:border-cyan-500 focus:outline-none transition-colors rounded-sm" />
+                    <input type="email" placeholder="EMAIL" className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:border-cyan-500 focus:outline-none transition-colors rounded-sm" />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-muted-foreground">Message</label>
-                    <textarea className="w-full px-4 py-3 rounded-xl bg-background/50 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all h-40 resize-none" placeholder="Tell us about your project..." />
-                  </div>
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-blue-500/25">
-                    Send Message
+                  <textarea placeholder="PROJECT DETAILS" className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm focus:border-cyan-500 focus:outline-none transition-colors h-32 resize-none rounded-sm" />
+                  <button className="w-full bg-primary text-background font-bold uppercase tracking-wider py-4 hover:bg-cyan-400 transition-colors rounded-sm">
+                    Send Transmission
                   </button>
                 </form>
               </div>
@@ -389,14 +370,14 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="py-12 border-t border-white/5 bg-background text-center">
+      <footer className="py-12 border-t border-white/10 bg-background text-center">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-center gap-2 mb-4 opacity-50">
+          <div className="flex items-center justify-center gap-2 mb-6 opacity-50">
             <ProSolvLogo />
-            <span className="font-bold text-lg">ProSolv</span>
+            <span className="font-bold text-lg tracking-widest uppercase">ProSolv</span>
           </div>
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} ProSolv LLC. All rights reserved.
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
+            &copy; {new Date().getFullYear()} ProSolv LLC. Systems Operational.
           </p>
         </div>
       </footer>
@@ -406,84 +387,54 @@ export default function Home() {
 
 function ServiceCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
   return (
-    <motion.div
-      whileHover={{ y: -5 }}
-      className="p-8 rounded-3xl bg-muted/30 border border-white/5 hover:border-blue-500/30 hover:bg-muted/50 transition-all group"
-    >
-      <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 text-2xl border border-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-        {icon}
+    <div className="p-8 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all group rounded-sm">
+      <div className="text-cyan-400 mb-6 w-12 h-12 flex items-center justify-center bg-cyan-500/10 rounded-sm group-hover:scale-110 transition-transform">
+        {React.cloneElement(icon as React.ReactElement<any>, { size: 24 })}
       </div>
-      <h3 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">{description}</p>
-    </motion.div>
+      <h3 className="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+    </div>
   )
 }
 
-function CaseStudyCard({
-  badge,
-  badgeColor,
-  title,
-  description,
-  features,
-  gradient,
-  image
-}: {
-  badge: string
-  badgeColor: 'emerald' | 'blue' | 'purple'
-  title: string
-  description: string
-  features: string[]
-  gradient: string
-  image?: string
-}) {
-  const badgeColors = {
-    emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-    blue: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-    purple: 'bg-purple-500/10 text-purple-400 border-purple-500/20'
-  }
-
+function CaseStudyRow({ title, category, description, stats, image, align }: { title: string, category: string, description: string, stats: { label: string, value: string }[], image: string, align: 'left' | 'right' }) {
   return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      className="group relative rounded-2xl border border-white/10 bg-slate-900/50 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-all duration-300"
-    >
-      {/* Gradient Glow Effect */}
-      <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300 -z-10`} />
+    <div className={`flex flex-col lg:flex-row gap-12 items-center ${align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
+      <div className="flex-1 space-y-6">
+        <div className="text-cyan-400 font-mono text-xs uppercase tracking-widest">{category}</div>
+        <h3 className="text-3xl font-bold">{title}</h3>
+        <p className="text-muted-foreground text-lg leading-relaxed">{description}</p>
 
-      {image && (
-        <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-        </div>
-      )}
-
-      <div className="p-8 space-y-6">
-        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border ${badgeColors[badgeColor]} uppercase tracking-wider`}>
-          {badge}
-        </div>
-
-        <h3 className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}>
-          {title}
-        </h3>
-
-        <p className="text-muted-foreground leading-relaxed">
-          {description}
-        </p>
-
-        <div className="space-y-2 pt-2">
-          {features.map((feature) => (
-            <div key={feature} className="flex items-center gap-2 text-sm">
-              <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${gradient}`} />
-              <span className="text-muted-foreground">{feature}</span>
+        <div className="grid grid-cols-3 gap-4 py-6 border-y border-white/5">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-2xl font-bold text-white">{stat.value}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
+
+        <button className="text-sm font-bold uppercase tracking-wider flex items-center gap-2 hover:text-cyan-400 transition-colors group">
+          View Case Study <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </button>
       </div>
-    </motion.div>
+
+      <div className="flex-1 w-full">
+        <div className="relative aspect-video bg-muted rounded-sm overflow-hidden border border-white/10 group">
+          <div className="absolute inset-0 bg-cyan-500/10 group-hover:bg-transparent transition-colors z-10" />
+          <Image src={image} alt={title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+
+          {/* Decorative UI Elements */}
+          <div className="absolute top-4 right-4 z-20 flex gap-1">
+            <div className="w-1 h-1 bg-white/50" />
+            <div className="w-1 h-1 bg-white/50" />
+            <div className="w-1 h-1 bg-white/50" />
+          </div>
+          <div className="absolute bottom-4 left-4 z-20 font-mono text-[10px] text-white/50">
+            IMG_SRC: {image.split('/').pop()}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
