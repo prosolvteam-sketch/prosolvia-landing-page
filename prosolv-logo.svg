@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main P shape -->
+  <path d="M6 4H14C19.5228 4 24 8.47715 24 14V14C24 19.5228 19.5228 24 14 24H6V4Z" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Code bracket accent -->
+  <path d="M14 10L18 14L14 18" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Bottom accent line -->
+  <path d="M6 28H14" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+</svg>

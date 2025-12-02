@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* Forçando Dark Mode como padrão */
+  --background: #030712;
+  /* Gray 950 */
+  --foreground: #f8fafc;
+  /* Slate 50 */
+
+  --primary: #3b82f6;
+  /* Blue 500 */
+  --primary-foreground: #ffffff;
+
+  --muted: #1e293b;
+  /* Slate 800 */
+  --muted-foreground: #94a3b8;
+  /* Slate 400 */
+
+  --border: #1e293b;
+  /* Slate 800 */
+}
+
+/* Removido o media query para garantir consistência */
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilitários de Animação */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
